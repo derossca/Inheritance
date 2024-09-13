@@ -51,7 +51,8 @@ public class Worker extends Person {
 
     /*
     Calculates the weekly pay of a worker including regular and overtime pay
-    @param
+    @param double hoursWorked to put in how many hours worked
+    @return totalPay of regular hours worked and overtime hours worked
      */
     public double calculateWeeklyPay(double hoursWorked)
     {
@@ -71,5 +72,17 @@ public class Worker extends Person {
         return totalPay;
     }
 
-    public dou
+    public void displayWeeklyPay (double hoursWorked) {
+        double pay = calculateWeeklyPay(hoursWorked);
+
+        if (hoursWorked <= 40) {
+            double regHours;
+            double overTimeHours;
+
+            if (hoursWorked <= 40) {
+                regHours = 40;
+                System.out.println();
+            }
+        }
+    }
 }
