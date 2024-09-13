@@ -1,4 +1,4 @@
-public class Worker {
+public class Worker extends Person {
 
     /*
     Fields
@@ -20,4 +20,34 @@ public class Worker {
 
     overload toCSV(), toXML(), toJSON() to include new data field
      */
+
+    private double hourlyPayRate;
+
+    public Worker(String IDNum, String firstName, String lastName, String title, int YOB, double hourlyPayRate) {
+        super(IDNum, firstName, lastName, title, YOB);
+        this.hourlyPayRate = hourlyPayRate;
+    }
+
+    public Worker(Person person, double hourlyPayRate) {
+        super(person.getIDNum(),
+                person.getFirstName(),
+                person.getLastName(),
+                person.getTitle(),
+                person.getYOB());
+        this.hourlyPayRate = hourlyPayRate;
+    }
+
+    public double calculateWeeklyPay(double hoursWorked)
+    {
+        double regPay;
+        double overTimePay;
+
+        if(hoursWorked <= 40) {
+            regPay = hoursWorked * hourlyPayRate;
+            overTimePay = 0;
+        } else {
+            regPay = hourlyPayRate * 40;
+            overTimePay = (hoursWorked - 40) *(hourlyPayRate * 1.5);
+        }
+    }
 }
