@@ -23,6 +23,16 @@ public class Worker extends Person {
 
     private double hourlyPayRate;
 
+    //getter and setter for hourlyPayRate
+    public double getHourlyPayRate() {
+        return hourlyPayRate;
+    }
+
+    public void setHourlyPayRate(double hourlyPayRate) {
+        this.hourlyPayRate = hourlyPayRate;
+    }
+
+    //Constructors for Worker class
     public Worker(String IDNum, String firstName, String lastName, String title, int YOB, double hourlyPayRate) {
         super(IDNum, firstName, lastName, title, YOB);
         this.hourlyPayRate = hourlyPayRate;
@@ -37,10 +47,17 @@ public class Worker extends Person {
         this.hourlyPayRate = hourlyPayRate;
     }
 
+    //Methods
+
+    /*
+    Calculates the weekly pay of a worker including regular and overtime pay
+    @param
+     */
     public double calculateWeeklyPay(double hoursWorked)
     {
         double regPay;
         double overTimePay;
+        double totalPay;
 
         if(hoursWorked <= 40) {
             regPay = hoursWorked * hourlyPayRate;
@@ -49,5 +66,10 @@ public class Worker extends Person {
             regPay = hourlyPayRate * 40;
             overTimePay = (hoursWorked - 40) *(hourlyPayRate * 1.5);
         }
+
+        totalPay = regPay + overTimePay;
+        return totalPay;
     }
+
+    public dou
 }
