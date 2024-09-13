@@ -74,15 +74,21 @@ public class Worker extends Person {
 
     public void displayWeeklyPay (double hoursWorked) {
         double pay = calculateWeeklyPay(hoursWorked);
+        double regHours = 0;
+        double overTimeHours = 0;
 
         if (hoursWorked <= 40) {
-            double regHours;
-            double overTimeHours;
-
-            if (hoursWorked <= 40) {
-                regHours = 40;
-                System.out.println();
-            }
+            regHours = 40;
+        } else {
+            overTimeHours = hoursWorked - 40;
         }
+
+        double totalHours = regHours + overTimeHours;
+
+        //reg overtime total and pay
+        System.out.printf("%-15s%-15s%-15s%-15s", "Regular Hours", "Overtime Hours", "Total Hours", "Pay");
+        System.out.printf("============================================================");
+        System.out.printf("%-15d%-15d%-15d%-15d",regHours, overTimeHours, totalHours, pay);
+
     }
 }
