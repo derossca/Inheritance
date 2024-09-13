@@ -13,7 +13,7 @@ public class Worker {
     then set rest of fields
 
     hours under 40 are at HourlyRate
-    hourse above 40 are 1.5 time
+    hours above 40 are 1.5 time
 
     displayWeeklyPay should indicate number of hours of reg pay
     and total and number of hours of overtime to get total combined pay
