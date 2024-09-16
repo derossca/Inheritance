@@ -40,15 +40,15 @@ class PersonTest {
     }
 
     @Test
-    void toJSONRecord() {
+    void toJSONDataRecord() {
         String expectedJSON = "{\"IDNum\":\"00000A\",\"firstName\":\"John\",\"lastName\":\"Doe\",\"title\":\"Mr.\",\"YOB\":\"1990\"}";
-        assertEquals(expectedJSON, p1.toJSONRecord());
+        assertEquals(expectedJSON, p1.toJSONDataRecord());
     }
 
     @Test
-    void toXMLRecord() {
+    void toXMLDataRecord() {
         String expectedXML = "<person><IDNum>00000A</IDNum><firstName>John</firstName><lastName>Doe</lastName><title>Mr.</title><YOB>1990</YOB></person>";
-        assertEquals(expectedXML, p1.toXMLRecord());
+        assertEquals(expectedXML, p1.toXMLDataRecord());
     }
 
     @Test

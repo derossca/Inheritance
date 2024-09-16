@@ -1,6 +1,6 @@
 import java.util.Calendar;
 
-public abstract class Person {
+public class Person {
     private String IDNum;
     private String firstName;
     private String lastName;
