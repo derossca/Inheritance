@@ -24,7 +24,7 @@ public class InheritanceDemo {
         workers.add(Alex);
 
         //variable for displayWeeklyPay method
-        double [] weeklyHours = {40,50,40};
+        double [] weeklyHours = {0,40,50,40};
 
 
         //For loops for 3 weeks pay

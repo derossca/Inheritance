@@ -85,7 +85,7 @@ public class Worker extends Person{
             return display;
         } else {
             display = "Regular Hours: " + "40" + " - Regular Pay: " + calculateWeeklyPay(40) + " - Overtime Hours: "
-                    + hoursWorked + " - Total Pay: " + calculateWeeklyPay(hoursWorked);
+                    + (hoursWorked - 40) + " - Total Pay: " + calculateWeeklyPay(hoursWorked);
             return display;
         }
     }
