@@ -1,4 +1,4 @@
-public class SalaryWorker {
+public class SalaryWorker extends Worker{
     /*
     Fields
     double annualSalary
@@ -15,4 +15,62 @@ public class SalaryWorker {
 
     4. overload toCSV(), toXML(), toJSON() to include new data field
      */
+
+    //Fields
+    private double annualSalary;
+
+    //Getter and setter of fields
+    public double getAnnualSalary() {
+        return annualSalary;
+    }
+
+    public void setAnnualSalary(double annualSalary) {
+        this.annualSalary = annualSalary;
+    }
+
+    /*
+    Constructor for SalaryWorker that calls super() of Worker
+     * @param IDNum
+     * @param firstName
+     * @param lastName
+     * @param title
+     * @param YOB
+     * @param hourlyPayRate
+     * @param annualSalary
+     */
+    public SalaryWorker(String IDNum, String firstName, String lastName, String title, int YOB, double hourlyPayRate, double annualSalary) {
+        super(IDNum, firstName, lastName, title, YOB, hourlyPayRate);
+        this.annualSalary = annualSalary;
+    }
+
+    public SalaryWorker(Worker worker, double annualSalary) {
+        super(worker, annualSalary);
+    }
+
+    @Override
+    public double calculateWeeklyPay(double hoursWorked){
+        return annualSalary / 52;
+    }
+
+    @Override
+    public String displayWeeklyPay (double hoursWorked){
+        double weeklyPay = calculateWeeklyPay(hoursWorked);
+        String display = String.format("Weekly Pay: $%.2f", weeklyPay, " a fraction of annual salary: $%.2f", annualSalary);
+        return display;
+    }
+
+    @Override
+    public String toCSVDataRecord() {
+        return super.toCSVDataRecord() + " , " + annualSalary;
+    }
+
+    @Override
+    public String toJSONDataRecord() {
+        return super.toJSONDataRecord().replace("}", String.format(",\"annualSalary\":%.2f}", annualSalary));
+    }
+
+    @Override
+    public String toXMLDataRecord() {
+        return super.toXMLDataRecord().replace("</worker>", String.format("<annualSalary>%.2f</annualSalary></salaryWorker>", annualSalary));
+    }
 }
