@@ -1,4 +1,4 @@
-public class Worker extends Person {
+public class Worker extends Person{
 
     /*
     Fields
@@ -21,18 +21,20 @@ public class Worker extends Person {
     overload toCSV(), toXML(), toJSON() to include new data field
      */
 
+
+    //Fields
     private double hourlyPayRate;
 
-    //getter and setter for hourlyPayRate
-    public double getHourlyPayRate() {
-        return hourlyPayRate;
-    }
 
-    public void setHourlyPayRate(double hourlyPayRate) {
-        this.hourlyPayRate = hourlyPayRate;
-    }
-
-    //Constructors for Worker class
+    /**
+     * constructor for instance variables
+     *
+     * @param IDNum
+     * @param firstName
+     * @param lastName
+     * @param title
+     * @param YOB
+     */
     public Worker(String IDNum, String firstName, String lastName, String title, int YOB, double hourlyPayRate) {
         super(IDNum, firstName, lastName, title, YOB);
         this.hourlyPayRate = hourlyPayRate;
@@ -47,48 +49,59 @@ public class Worker extends Person {
         this.hourlyPayRate = hourlyPayRate;
     }
 
+    //Getter and setter for hourlyPayRate
+
+    public double getHourlyPayRate() {
+        return hourlyPayRate;
+    }
+
+    public void setHourlyPayRate(double hourlyPayRate) {
+        this.hourlyPayRate = hourlyPayRate;
+    }
+
+
     //Methods
 
     /*
-    Calculates the weekly pay of a worker including regular and overtime pay
-    @param double hoursWorked to put in how many hours worked
-    @return totalPay of regular hours worked and overtime hours worked
+    creates a double that calculates the pay for hours worked
+    @param double hoursWorked
+    @return returns result of calculation providing for overtime
      */
-    public double calculateWeeklyPay(double hoursWorked)
-    {
-        double regPay;
-        double overTimePay;
-        double totalPay;
-
-        if(hoursWorked <= 40) {
-            regPay = hoursWorked * hourlyPayRate;
-            overTimePay = 0;
-        } else {
-            regPay = hourlyPayRate * 40;
-            overTimePay = (hoursWorked - 40) *(hourlyPayRate * 1.5);
+    public double calculateWeeklyPay(double hoursWorked){
+        if (hoursWorked <= 40) {
+            return hoursWorked * hourlyPayRate;
         }
-
-        totalPay = regPay + overTimePay;
-        return totalPay;
+        else
+        {
+            return (hourlyPayRate * 40) + ((hoursWorked - 40) * hourlyPayRate);
+        }
     }
 
-    public void displayWeeklyPay (double hoursWorked) {
-        double pay = calculateWeeklyPay(hoursWorked);
-        double regHours = 0;
-        double overTimeHours = 0;
-
+    public String displayWeeklyPay(double hoursWorked){
+        String display;
         if (hoursWorked <= 40) {
-            regHours = 40;
+            display = "Regular Hours: " + hoursWorked + " - Regular Pay: " + calculateWeeklyPay(hoursWorked) + " - Overtime Hours: "
+                    + "0" + " - Total Pay: " + calculateWeeklyPay(hoursWorked);
+            return display;
         } else {
-            overTimeHours = hoursWorked - 40;
+            display = "Regular Hours: " + "40" + " - Regular Pay: " + calculateWeeklyPay(40) + " - Overtime Hours: "
+                    + hoursWorked + " - Total Pay: " + calculateWeeklyPay(hoursWorked);
+            return display;
         }
+    }
 
-        double totalHours = regHours + overTimeHours;
+    @Override
+    public String toCSVDataRecord() {
+        return super.toCSVDataRecord() + "," + hourlyPayRate;
+    }
 
-        //reg overtime total and pay
-        System.out.printf("%-15s%-15s%-15s%-15s", "Regular Hours", "Overtime Hours", "Total Hours", "Pay");
-        System.out.printf("============================================================");
-        System.out.printf("%-15d%-15d%-15d%-15d",regHours, overTimeHours, totalHours, pay);
+    @Override
+    public String toJSONDataRecord() {
+        return super.toJSONDataRecord().replace("}", String.format(",\"hourlyPayRate\":%.2f}", hourlyPayRate));
+    }
 
+    @Override
+    public String toXMLDataRecord() {
+        return super.toXMLDataRecord().replace("</person>", String.format("<hourlyPayRate>%.2f</hourlyPayRate></person>", hourlyPayRate));
     }
 }

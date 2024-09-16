@@ -1,6 +1,6 @@
 import java.util.Calendar;
 
-public class Person {
+public abstract class Person {
     private String IDNum;
     private String firstName;
     private String lastName;
@@ -77,7 +77,7 @@ public class Person {
      * Returns the data of a person in JSON format
      * @return data in JSON format
      */
-    public String toJSONRecord() {
+    public String toJSONDataRecord() {
         String retString = "";
         char DQ = '\u0022'; //Assign the double quote char to a variable for readability
         retString = "{" + DQ + "IDNum" + DQ + ":" + DQ + IDNum + DQ + "," +
@@ -93,7 +93,7 @@ public class Person {
      * Returns a string of record in XML format
      * @return Person record in XML format
      */
-    public String toXMLRecord() {
+    public String toXMLDataRecord() {
         String retString = "";
         retString = "<person>";
         retString += "<IDNum>" + this.IDNum + "</IDNum>";
