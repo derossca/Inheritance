@@ -108,6 +108,6 @@ public class Worker extends Person{
 
     @Override
     public String toXMLDataRecord() {
-        return super.toXMLDataRecord().replace("</person>", String.format("<hourlyPayRate>%.2f</hourlyPayRate></worker>", hourlyPayRate));
+        return super.toXMLDataRecord().replace("</person>", String.format("<hourlyPayRate>%.2f</hourlyPayRate></person>", hourlyPayRate));
     }
 }

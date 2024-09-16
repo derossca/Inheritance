@@ -55,7 +55,7 @@ public class SalaryWorker extends Worker{
     @Override
     public String displayWeeklyPay (double hoursWorked){
         double weeklyPay = calculateWeeklyPay(hoursWorked);
-        String display = String.format("Weekly Pay: $%.2f", weeklyPay, " a fraction of annual salary: $%.2f", annualSalary);
+        String display = String.format("Weekly Pay: $%.2f 1/52 of annual salary of $%.2f)", weeklyPay, annualSalary);
         return display;
     }
 
@@ -71,6 +71,6 @@ public class SalaryWorker extends Worker{
 
     @Override
     public String toXMLDataRecord() {
-        return super.toXMLDataRecord().replace("</worker>", String.format("<annualSalary>%.2f</annualSalary></salaryWorker>", annualSalary));
+        return super.toXMLDataRecord().replace("</person>", String.format("<annualSalary>%.2f</annualSalary></person>", annualSalary));
     }
 }

@@ -23,6 +23,14 @@ public class InheritanceDemo {
         Worker Alex = new Worker("000003", "Alex", "Johnson", "Engineer", 1990, 55.25);
         workers.add(Alex);
 
+        SalaryWorker Ben = new SalaryWorker("000001","Ben", "Jones", "Electrician",  1992, 39.06, 75000);
+        workers.add(Ben);
+        SalaryWorker Todd = new SalaryWorker("000001","Todd", "Jones", "Mason",  1993, 33.85 , 65000);
+        workers.add(Todd);
+        SalaryWorker Melissa = new SalaryWorker("000001","Melissa", "Doe", "Nurse",  1998, 36.46 , 70000);
+        workers.add(Melissa);
+
+
         //variable for displayWeeklyPay method
         double [] weeklyHours = {0,40,50,40};
 
