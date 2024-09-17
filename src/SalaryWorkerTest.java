@@ -38,6 +38,8 @@ class SalaryWorkerTest {
 
     @Test
     void toJSONDataRecord() {
+        String expectedJSON = "{\"IDNum\":\"000001\",\"firstName\":\"John\",\"lastName\":\"Jones\",\"title\":\"Esq.\",\"YOB\":\"1990\",\"hourlyPayRate\":50.00,\"annualSalary\":96000.00}";
+        assertEquals(expectedJSON, s1.toJSONDataRecord());
     }
 
     @Test
