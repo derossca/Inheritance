@@ -44,5 +44,7 @@ class SalaryWorkerTest {
 
     @Test
     void toXMLDataRecord() {
+        String expectedXML = "<person><IDNum>000001</IDNum><firstName>John</firstName><lastName>Jones</lastName><title>Esq.</title><YOB>1990</YOB><hourlyPayRate>50.00</hourlyPayRate><annualSalary>96000.00</annualSalary></person>";
+        assertEquals(expectedXML, s1.toXMLDataRecord());
     }
 }
