@@ -33,7 +33,7 @@ class SalaryWorkerTest {
 
     @Test
     void toCSVDataRecord() {
-
+        assertEquals("000001,John,Jones,Esq.,1990,50.0,96000.0", s1.toCSVDataRecord());
     }
 
     @Test

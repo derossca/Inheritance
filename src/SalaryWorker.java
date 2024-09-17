@@ -61,7 +61,7 @@ public class SalaryWorker extends Worker{
 
     @Override
     public String toCSVDataRecord() {
-        return super.toCSVDataRecord() + " , " + annualSalary;
+        return super.toCSVDataRecord() + "," + annualSalary;
     }
 
     @Override
